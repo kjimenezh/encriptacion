@@ -19,5 +19,13 @@ public class DividendStock extends Stock{
        return (this.totalShares*this.currentPrice)+this.dividends; 
     }
     
-    public void add(){};
+    @Override
+    public void darInformacion(){
+        System.out.println("DIVIDENDSTOCK: ");
+        System.out.println("symbol: "+this.symbol);
+        System.out.println("totalCost: "+this.totalCost);
+        System.out.println("currentPrice: "+this.currentPrice);
+        System.out.println("totalShares: "+this.totalShares);
+        System.out.println("dividends: "+this.dividends);
+    }
 }

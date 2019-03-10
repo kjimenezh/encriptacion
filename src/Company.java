@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @author Estudiante
+ * @author Kevin Jiménez
  */
 
 public class Company {
@@ -116,28 +116,75 @@ public class Company {
         System.out.println("/nValor en el mercado: "+marketvaluec);
         System.out.println("/nBeneficio total: "+profitc);
     }
-    //Hacer método para conocer cliente mayores beneficios...
     
-    public void ClientMoreProfit(){
-        ArrayList<Double> profits = new ArrayList();
+    //Hacer método para conocer cliente mayores beneficios... 
+    public Client ClientMoreProfit(int id){
+        double profitA = 0;
+        //Calculando profit primer cliente que aparece en HashMap
+        Client clientA = this.clientes.get(id);
+        for(Asset assetA : clientA.getAssets()){
+            profitA+=assetA.getProfit();
+        }
         double profit = 0;
+        Client clientProfit = new Client();
+        //Hallando cliente con mayor profit
         for(Client client : clientes.values()){
             for(Asset asset : client.getAssets()){
                 profit+=asset.getProfit();
             }
-            profits.add(profit);
+            if(profitA<profit){
+                profitA = profit;
+                clientProfit=client;
+            }
             profit = 0;
         }
-        double 
-        for(int i=0;i<profits.size();i++){
-            if(profits.get(i)>profits.get(i+1)){
-                
+        return clientProfit;
+    }
+    
+    //Hacer método para listado de clientes con valor en el mercado de los activo...
+    public void clientswithValue(){
+        ArrayList<Double> marketsvalue = new ArrayList<Double>();
+        ArrayList<Client> clients = new ArrayList<Client>();
+        double marketvalue = 0;
+        
+        for(Client client : clientes.values()){
+            for(Asset asset : client.getAssets()){
+                marketvalue+=asset.getMarketValue();
+            }
+            if(marketvalue!=0){
+                marketsvalue.add(marketvalue);
+                clients.add(client);
+                marketvalue = 0;
             }
         }
+        
+        //Ordenando los ArrayList de manera descendente
+        double c = 0;
+        Client client = new Client();
+        
+        for(int i=0;i<marketsvalue.size();i++){
+            for(int j=i;j<marketsvalue.size();j++){
+                if(marketsvalue.get(i)<marketsvalue.get(j)){
+                    c = marketsvalue.get(i);
+                    client = clients.get(i);
+                    marketsvalue.add(i, marketsvalue.get(j));
+                    clients.add(i, clients.get(j));
+                    marketsvalue.add(j, c);
+                    clients.add(j, client);
+            }
+        }          
+        }
+        
+        //Mostrando información
+        System.out.println("Lista de clientes con valor en el mercado de los activos");
+        System.out.println("Nombre;Apellido;Monto Total");
+        for(int i=0;i<clients.size();i++){
+            System.out.println(clients.get(i).getName()+";"+clients.get(i).getLastName()+";"+marketsvalue.get(i));
+        }
     }
-    //Hacer método para listado de clientes con valor en el mercado de los activo...
     
     
+    /**
     //Para acceder a un método particular de un hijo que desconoce el padre...
     public void Instanceof(){
         for(Client client : clientes.values()){
@@ -149,4 +196,5 @@ public class Company {
             }
         }
     }
+    */
 }

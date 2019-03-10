@@ -23,4 +23,8 @@ public class MutualFund extends ShareAsset{
         return (this.totalShares*this.currentPrice)-this.totalCost;
     }
     
+    @Override
+    public void darInformacion(){
+        System.out.println("MuntualFund: ");
+    }
 }

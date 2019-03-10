@@ -11,7 +11,8 @@ public class Client {
     private String email;
     private Asset[] assets;
     private int edad;
-
+    
+    public Client(){};
     public Client(int id, String name, String lastName, String email, int edad) {
         this.id = id;
         this.name = name;

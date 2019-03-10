@@ -22,5 +22,13 @@ public class Stock extends ShareAsset{
     public double getProfit() {
         return (this.totalShares*this.currentPrice)-this.totalCost;
     }
-  
+    
+    @Override
+    public void darInformacion(){
+        System.out.println("STOCK: ");
+        System.out.println("symbol: "+this.symbol);
+        System.out.println("totalCost: "+this.totalCost);
+        System.out.println("currentPrice: "+this.currentPrice);
+        System.out.println("totalShares: "+this.totalShares);
+    }
 }

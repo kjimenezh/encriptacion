@@ -21,5 +21,11 @@ public class Cash implements Asset {
     public double getProfit(){
         return 0;
     }
+    
+    @Override
+    public void darInformacion(){
+        System.out.println("CASH: ");
+        System.out.println("amount: " +this.amount);
+    }
 
 }

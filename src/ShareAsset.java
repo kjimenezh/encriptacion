@@ -16,4 +16,8 @@ public abstract class ShareAsset implements Asset{
     }
     
     //No implemento getProfit porque no tengo los datos para hacerlo, por lo que los hijos tienen que implementarlo
+
+    public String getSymbol() {
+        return symbol;
+    }
 }

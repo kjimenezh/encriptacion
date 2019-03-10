@@ -5,6 +5,7 @@
  * @author Estudiante
  */
 public interface Asset {
-    public abstract double getMarketValue();
-    public abstract double getProfit();
+    public double getMarketValue();
+    public double getProfit();
+    public void darInformacion();
 }
